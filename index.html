@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Hide &amp; Seek by DavidCottingham</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/DavidCottingham/HideSeek">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/DavidCottingham/HideSeek/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/DavidCottingham/HideSeek/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Hide &amp; Seek</h1>
+          <p>Escape</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/DavidCottingham">DavidCottingham</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <table>
+<thead><tr>
+<th>Some things I worked on</th>
+<th>Percent of overall project</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Maze Creation Algorithm</td>
+<td>Significant (but unused)</td>
+</tr>
+<tr>
+<td>Navmesh Implementation</td>
+<td>Significant (but unused)</td>
+</tr>
+<tr>
+<td>Unity Navmesh &amp; Pathfinding</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td>C# Delegates &amp; Events</td>
+<td>Minor</td>
+</tr>
+<tr>
+<td>Unity Raycasting</td>
+<td>Minor</td>
+</tr>
+</tbody>
+</table><table>
+<thead><tr>
+<th>Tools and Resources</th>
+<th></th>
+</tr></thead>
+<tbody>
+<tr>
+<td><a href="http://www.unity3d.com/">Unity 4.3</a></td>
+<td>Game Engine / Editor</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>Scripting Language</td>
+</tr>
+<tr>
+<td>Microsoft Visual Studio Express 2012</td>
+<td>IDE</td>
+</tr>
+<tr>
+<td><a href="http://www.gimp.org/">GIMP</a></td>
+<td>Image Editor</td>
+</tr>
+<tr>
+<td><a href="http://www.freesound.org/">FreeSound.org</a></td>
+<td>Sound Effects</td>
+</tr>
+<tr>
+<td><a href="http://incompetech.com/">incompetech.com</a></td>
+<td>Music</td>
+</tr>
+</tbody>
+</table><h2>
+<a name="personal-goal" class="anchor" href="#personal-goal"><span class="octicon octicon-link"></span></a>Personal Goal</h2>
+
+<p>My initial plan for this game was to make it right after the Space Dodge game. My plans became too ambitious for a month-long project though, so I decided to take more time on it. Those ambitious goals were a problem for my skills though. I completed some of them, but others were taking too long and I was getting frustrated on the lack of progress on the game. So in the end, I decided to drop those ambitious goals and make it for One Game A Month again. I decided this in the middle of the month, however, so I only had a couple of weeks to finish the game. Unfortunately, the rushed development is evident in the game's production. I was sad to abandon the hard work I had done on those initial goals, but in the end, I decided completing the game was more important since I wasn't making the progress I wanted. This was only my second game so I thought completing the game in more timely fashion would be more beneficial. I also found a lack of drive when I didn't have a month deadline. So I think it was the right decision to complete the game sans the original goals. Hopefully I can still use that knowledge I gained from working on those goals for a future game. Because I went back and forth on this game and ended up rushing to finish, I am mostly unhappy with the way this game turned out. But I hope I can use it as a learning experience and move on to do better on my next game.</p>
+
+<h2>
+<a name="what-i-learned" class="anchor" href="#what-i-learned"><span class="octicon octicon-link"></span></a>What I Learned</h2>
+
+<h3>
+<a name="technical" class="anchor" href="#technical"><span class="octicon octicon-link"></span></a>Technical</h3>
+
+<p>As I said, I had a few ambitious goals for this project, which I eventually dropped. However, I did complete a couple before dropping those. One was to progammatically make the mazes. I used a byte array to store the maze data. The missing walls at each cell were determined by a <a href="http://weblog.jamisbuck.org/2011/1/27/maze-generation-growing-tree-algorithm">Growing Tree algorithm</a>. The array is read by another class that builds the maze using Unity prefabs for walls. A bitmask is used on each array position to determine which walls to place on the level. The cell's neighbors were also queried so that duplicate walls were not placed. I then tried to build a navmesh for the AI to navigate with. This gave me the most trouble, but eventually I got a programmtically created mesh created. I had to learn how Unity stores mesh data and how meshes work in general. The same bit array was read to know where to place mesh vertices. Triangles were drawn from those verts. I ran into an issue when drawing the mesh between cells. I had to look at cell neighbors to know not only whether to bridge the cells but whether corner cells' walls would be in the path of mesh. But eventually I got the mesh building around walls! Unfortunately, I soon learned that my mesh was ill-suited for being a navmesh. It had symmetric and evenly-placed verts which would have been more suited for a node graph for navigation if it weren't a mesh. But this is when I decided to drop all of that progress and finish the game without procedural generation and put it out for 1GAM.</p>
+
+<p>Of course I did learn things that did make it into the game. I utilized C#'s delegates and events in this project. I was very happy of how easy they were to use and how they made my scripts short and independent on each other. I imagine I could implement them better than I did so I hope to continue to improve my knowledge for future projects. I also learned about A* pathfinding. I read a lot about pathfinding in general when working on the game. In the end, I just went with Unity's built-in pathfinding, but before deciding on that, I educated myself on other options. I considered either implementing my own to get the experience or using <a href="http://arongranberg.com/astar/">Aron Granberg's Unity project</a> since Unity's would not work easily with procedurally generated levels. I also used Raycasting for the first time in this game. The sentries check for proximity to the player using raycasts. This allows my to avoid being detected through walls at the same time, so I really liked this solution. My use of raycasting was very basic but it worked well for what I needed.</p>
+
+<h3>
+<a name="challenges" class="anchor" href="#challenges"><span class="octicon octicon-link"></span></a>Challenges</h3>
+
+<p>The biggest challenges faced were when I was working on the procedural general for earlier plan for the game. I covered those challenges earlier. After abandoning that though, I decided to keep the project very simple; the challenges encountered were minor by comparison. I did run into an issue where my NavMesh Agent sentries were having problems reaching their path destinations. I figured out that it occurred when nudged off path from rubbing against a wall or the player pushing them off path (the player could get close enough to push the sentries before the "capture player" logic was implemented). The Agent would appear to reach the destination but would be "off" by a very small amount and end up getting stuck trying to complete the path. I don't know if this is a bug on Unity's side or if it is working as intended I was simply working outside of intended use. I implemented my own method to tell the agent to move to the next destination when it noticed it was within a tolerance of the destination position. This proved to be unreliable though because this "check" would occur every 0.1 seconds and the agent would quickly move in and out of this tolerance range when trying to complete the path. There was no guarantee the check would occur when the agent was within this tolerance since it would hover around it when stuck. I could have tried working on this method further by increasing the range more than the Agent's stopping distance (the tolerance range I used at first), but I decided to go for the guaranteed and simpler solution of just preventing the agent from being pushed - freezing its position in the Rigidbody, making it kinematic, or what I ended up doing, just removing the Rigidbody altogether. This, of course meant that with the player's Rigidbody also being kinematic, the sentry and player would clip through each other. Originally, I didn't intend the the player to be caught by the sentry unless he had the key. I changed it so that he would be caught if he was within a certain range so that he wouldn't ever be able to clip through the sentry. This made the game more difficult and influenced the level design significantly. I don't regret the decision though. I think it appropriately provides challenge and tension when navigating the maze from the start of the level.</p>
+
+<p>I also ran into a small issue when working on the first level's tutorial. When teaching about the patrolling sentry, I force the player camera to look at the sentry as it passes by. Unfortunately, the camera jerks pack to the player's original look position once player control is resumed. I also wanted to do this to show the sentry was in pursuit after picking up the key. I didn't like this since it would be disorienting and annoying. I tried many things in my scripts but was unable to find a solution. I ended up only forcing look at the very beginning and not when picking up the key so that people wouldn't get turned around and get caught just because of the tutorial mechanic. I felt it was acceptable for the first tutorial message since there was a high chance they would be looking in an approximately similar direction anyway and they were in no danger. I also ran into an issue when trying to place the player character in a facing direction other than 0 degrees from world orientation. The issue was because of my not initializing a variable in my player look script (it was getting the default of 0). The issue was easily resolved but it took longer for me to find the issue than it probably should have!</p>
+
+<h2>
+<a name="what-i-would-change" class="anchor" href="#what-i-would-change"><span class="octicon octicon-link"></span></a>What I Would Change</h2>
+
+<p>Since the game was rushed after deciding to go back to a one-month schedule in the middle of the month, there are lots of things that did not receive the attention that they should have. My level design could have been better. I think the last two levels are more difficult than they should be, and conversely, I think the middle two levels are too easy. It's difficult for me to gauge difficulty since I already know where the key and exit are. There are only simple colors used to texture objects. Not only is this boring but it's also ugly since I didn't use any color palette to choose colors. I also would have liked to make the sentry AI a little smarter by letting them attempt to get ahead of the player to cut him off on his way to the exit. This would not have been simple to implement though, so I didn't even attempt it in the time limit I had.</p>
+
+<h2>
+<a name="bugs-known-at-release" class="anchor" href="#bugs-known-at-release"><span class="octicon octicon-link"></span></a>Bugs Known At Release</h2>
+
+<p>I know of only one bug that can rarely occur. If there are more than one sentry that will reach the same destination at the same time, they can get stuck on each other, both trying to reach the last half unit on the path at the same time as preventing the other from doing the same by being in the way. This is a rare occurrence since destinations are randomly chosen and even if choosing the same destination, it would be unlikely they would both reach it at the same time. I did see it occur once though. I did not attempt to fix it since it is a rare occurrence and they would both start chasing the player once he picks up the key anyway. This could be resolved by possibly increasing the stopping distance of the Agent component. Or if that didn't fix it, maybe implementing a check that would check if an agent was a certain distance from its destination for more than a certain amount of time, it would just tell it to move on to the next destination.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
